@@ -3,22 +3,12 @@ package model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "drivers")
-public class Driver {
+@Table(name = "users")
+public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private Long placeNow;
-
-
-    public Long getPlaceNow() {
-        return placeNow;
-    }
-
-    public void setPlaceNow(Long placeNow) {
-        this.placeNow = placeNow;
-    }
 
     public Long getId() {
         return id;
@@ -35,6 +25,4 @@ public class Driver {
     public void setName(String name) {
         this.name = name;
     }
-
-
 }
