@@ -1,4 +1,4 @@
-package model;
+package com.example.demo.model;
 
 import jakarta.persistence.*;
 
@@ -11,12 +11,20 @@ public class Order {
     private Boolean status;
     private Long placeStart;
     private Long placeFinish;
-    private Long idUser;
+    private Long idClient;
     private Long idDriver;
     private Long price;
 
     public Long getId() {
         return id;
+    }
+
+    public Long getIdClient() {
+        return idClient;
+    }
+
+    public void setIdClient(Long idClient) {
+        this.idClient = idClient;
     }
 
     public void setId(Long id) {
@@ -45,14 +53,6 @@ public class Order {
 
     public void setPlaceFinish(Long placeFinish) {
         this.placeFinish = placeFinish;
-    }
-
-    public Long getIdUser() {
-        return idUser;
-    }
-
-    public void setIdUser(Long idUser) {
-        this.idUser = idUser;
     }
 
     public Long getIdDriver() {
