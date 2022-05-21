@@ -9,22 +9,13 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Boolean status;
-    private Long placeStart;
-    private Long placeFinish;
-    private Long idClient;
+    private String placeStart;
+    private String placeFinish;
     private Long idDriver;
-    private Long price;
+    private Integer price;
 
     public Long getId() {
         return id;
-    }
-
-    public Long getIdClient() {
-        return idClient;
-    }
-
-    public void setIdClient(Long idClient) {
-        this.idClient = idClient;
     }
 
     public void setId(Long id) {
@@ -35,39 +26,42 @@ public class Order {
         return status;
     }
 
+    public String getPlaceStart() {
+        return placeStart;
+    }
+
+    public void setPlaceStart(String placeStart) {
+        this.placeStart = placeStart;
+    }
+
+    public String getPlaceFinish() {
+        return placeFinish;
+    }
+
+    public void setPlaceFinish(String placeFinish) {
+        this.placeFinish = placeFinish;
+    }
+
     public void setStatus(Boolean status) {
         this.status = status;
     }
 
-    public Long getPlaceStart() {
-        return placeStart;
-    }
-
-    public void setPlaceStart(Long placeStart) {
-        this.placeStart = placeStart;
-    }
-
-    public Long getPlaceFinish() {
-        return placeFinish;
-    }
-
-    public void setPlaceFinish(Long placeFinish) {
-        this.placeFinish = placeFinish;
-    }
 
     public Long getIdDriver() {
         return idDriver;
+    }
+
+    public Integer getPrice() {
+        return price;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
     }
 
     public void setIdDriver(Long idDriver) {
         this.idDriver = idDriver;
     }
 
-    public Long getPrice() {
-        return price;
-    }
 
-    public void setPrice(Long price) {
-        this.price = price;
-    }
 }

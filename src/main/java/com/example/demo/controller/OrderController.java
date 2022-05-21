@@ -17,8 +17,13 @@ public class OrderController {
         return orderRepository.findAll();
     }
 
+    public int getRandomNumber(int min, int max) {
+        return (int) ((Math.random() * (max - min)) + min);
+    }
+
     @PostMapping("/orders")
     public Order create(@RequestBody Order order){
+        order.setPrice(getRandomNumber(100,500));
         return orderRepository.save(order);
 
     }
@@ -39,7 +44,6 @@ public class OrderController {
             oldOrder.setStatus(newOrder.getStatus());
             oldOrder.setPlaceStart(newOrder.getPlaceStart());
             oldOrder.setPlaceFinish(newOrder.getPlaceFinish());
-            oldOrder.setIdClient(newOrder.getIdClient());
             oldOrder.setIdDriver(newOrder.getIdDriver());
             oldOrder.setPrice(newOrder.getPrice());
             return orderRepository.save(oldOrder);
