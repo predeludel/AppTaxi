@@ -4,7 +4,10 @@ package com.example.demo.controller;
 import com.example.demo.model.Order;
 import com.example.demo.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping("/api")
@@ -22,34 +25,22 @@ public class OrderController {
     }
 
     @PostMapping("/orders")
-    public Order create(@RequestBody Order order){
-        order.setPrice(getRandomNumber(100,500));
+    public Order create(@RequestBody Order order) {
+        order.setPrice(getRandomNumber(100, 500));
+        order.setStatus(true);
         return orderRepository.save(order);
 
     }
+
     @DeleteMapping("/orders/{id}")
-    public Boolean delete(@PathVariable Long id){
-        if (orderRepository.existsById(id)){
+    public Boolean delete(@PathVariable Long id) {
+        if (orderRepository.existsById(id)) {
             orderRepository.deleteById(id);
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }
-    @PutMapping("/orders")
-    public Order update(@RequestBody Order newOrder){
-        if (orderRepository.findById(newOrder.getId()).isPresent()){
-            Order oldOrder = orderRepository.findById(newOrder.getId()).get();
-            oldOrder.setStatus(newOrder.getStatus());
-            oldOrder.setPlaceStart(newOrder.getPlaceStart());
-            oldOrder.setPlaceFinish(newOrder.getPlaceFinish());
-            oldOrder.setIdDriver(newOrder.getIdDriver());
-            oldOrder.setPrice(newOrder.getPrice());
-            return orderRepository.save(oldOrder);
-        } else{
-            return orderRepository.save(newOrder);
-        }
 
-    }
+
 }

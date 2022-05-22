@@ -46,41 +46,26 @@
   maximumAge: 0
 };
 var crd;
-
 function init(){
-// Создание карты.
 var myMap = new ymaps.Map("map", {
-    // Координаты центра карты.
-    // Порядок по умолчанию: «широта, долгота».
-    // Чтобы не определять координаты центра карты вручную,
-    // воспользуйтесь инструментом Определение координат.
     center: [crd.latitude, crd.longitude],
-    // Уровень масштабирования. Допустимые значения:
-    // от 0 (весь мир) до 19.
     zoom: 19
 });
 };
-
-
 function success(pos) {
 crd = pos.coords;
 ymaps.ready(init);
-
 };
-
 function error(err) {
   console.warn(`ERROR(${err.code}): ${err.message}`);
 };
-
 navigator.geolocation.getCurrentPosition(success, error, options);
-
 function createOrder(){
 console.log("qopwfq");
 const order= {
     placeStart: document.getElementById("placeStart").value,
     placeFinish: document.getElementById("placeFinish").value
 };
-// кодируем объект в формат json
 const data = JSON.stringify(order);
 $.ajax({
   type: "POST",

@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface OrderRepository extends CrudRepository<Order, Long> {
+    public Iterable<Order> findAllByStatus(Boolean status);
 }

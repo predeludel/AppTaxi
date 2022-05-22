@@ -23,22 +23,23 @@
             <div class="container bg-danger mt-4"
                  style="border-radius:0.8rem;">
                 <ol class="list-group list-group-numbered">
-
-                    <li th:each ="order : ${orders}" class="list-group-item d-flex justify-content-between align-items-start">
-                        <div class="ms-2 me-auto">
-                            <div class="fw-bold" th:utext="${order.placeFinish}"></div>
-                            от:
-                            <h6 th:utext="${order.placeStart}"></h6>
-                        </div>
-                        <span class="badge bg-primary rounded-pill" th:text="${order.price}">р</span>
-                    </li>
+                    <div th:each="order : ${orders}">
+                        <a th:href="@{/api/orders/{id}/status/false(id=${order.id})}" onclick="show();" class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold" th:text="${order.placeFinish}"></div>
+                                <h6>от: <nobr th:text="${order.placeStart}"></nobr></h6>
+                            </div>
+                            <span class="badge bg-primary rounded-pill"><nobr th:text="${order.price}"></nobr>р</span>
+                        </a>
+                        </th:div>
                 </ol>
             </div>
-            <div class="col-xs-1" align="center">
-                <button type="button" class="btn color-light btn-danger mt-4">Готов выполнить заказ!</button>
-            </div>
-
         </div>
     </div>
 </body>
+<script>
+    function show(){
+    alert("Вы взяли заказ!");
+    };
+</script>
 </html>
